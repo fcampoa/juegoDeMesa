@@ -5,26 +5,17 @@
  */
 package com.modelos;
 
-import com.interfaces.*;
-import java.awt.Image;
+import com.interfaces.IPieza;
 import java.io.File;
-import com.utilerias.utileriasGlobal;
 
 /**
  *
- * @author Usuario
+ * @author felix
  */
-public class Alfil extends Pieza implements IPieza {
+public class Pieza implements IPieza {
 
-    public Alfil(int color) {
-        this.color = color;
-        if (color == utileriasGlobal.BLANCAS) {
-            imagen = new File("imagenes/alfinBlanco.png");
-        } else {
-            imagen = new File("imagenes/alfilNegro.png");
-        }
-        System.out.println(imagen.getPath());
-    }
+    protected int color;
+    protected File imagen;
 
     @Override
     public void setImagen(File imagen) {
@@ -50,5 +41,4 @@ public class Alfil extends Pieza implements IPieza {
     public void setColor(int color) {
         this.color = color;
     }
-
 }

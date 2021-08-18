@@ -53,9 +53,9 @@ public class ventanaAjedrez extends JFrame {
     double x = 0;
     double y = 0;
     for (int i = 1; i <=8; i++) {
-        addLabel(String.valueOf(numero), (int)(x+15), (int)((y+30)+25));
+        addLabel(String.valueOf(numero), (int)(x + 15), (int)((y + 30) + 25));
         for (int j = 1; j <=8; j++) {    
-            addLabel(String.valueOf(letra).toUpperCase() ,(int)((x+30)+25) ,(int)(y+10));
+            addLabel(String.valueOf(letra).toUpperCase() ,(int)((x + 30) + 25) ,(int)(y + 10));
             if((i+j) % 2 == 0 ){
                 color = new Color(242,230,230);
             }
@@ -63,11 +63,11 @@ public class ventanaAjedrez extends JFrame {
                 color = new Color(88,73,71);
             }
             Casilla c = new Casilla(String.valueOf(letra),numero,color);
-            c.setBounds(new Rectangle((int)x,(int)y,50,50));
+            c.setBounds(new Rectangle((int)x,(int)y, 50, 50));
             c.setBorder(BorderFactory.createLineBorder(Color.black));
             asignaPiezaInicial(c);                
             if(c.getPieza() != null)dibuja(c);           
-            casillas[i-1][j-1] = c;           
+            casillas[i - 1][j - 1] = c;           
             panelCasillas.add(c,null);
             letra++;
             x += 50;
@@ -131,8 +131,8 @@ public class ventanaAjedrez extends JFrame {
  private void dibuja(Casilla casilla){
     ImageIcon Imagen;    
     Imagen = new ImageIcon(casilla.getPieza().getImagen().getPath());
-        JLabel Img = new JLabel(Imagen);
-    Img.setSize(50,50);
+    JLabel Img = new JLabel(Imagen);
+    Img.setSize(50, 50);
     casilla.add(Img);  
     }
 

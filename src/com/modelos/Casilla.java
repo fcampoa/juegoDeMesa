@@ -11,29 +11,36 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+
 /**
  *
  * @author Usuario
  */
-public class Casilla extends JPanel implements ActionListener,MouseListener{
-    
+public class Casilla extends JPanel implements ActionListener, MouseListener {
+
     private String letra;
     private int numero;
     private Color color;
     private boolean ocupada;
+    private JLabel etiquetaImage;
+    private ImageIcon imagen;
+
     private IPieza pieza;
-    public Casilla(){
-        
+
+    public Casilla() {
+
     }
-    
-    public Casilla(String letra, int numero, Color color){
+
+    public Casilla(String letra, int numero, Color color) {
         this.letra = letra;
         this.numero = numero;
         this.color = color;
         ocupada = false;
         setBackground(color);
-        
+
     }
 
     public String getLetra() {
@@ -50,7 +57,7 @@ public class Casilla extends JPanel implements ActionListener,MouseListener{
 
     public void setNumero(int numero) {
         this.numero = numero;
-    }   
+    }
 
     public Color getColor() {
         return color;
@@ -59,12 +66,12 @@ public class Casilla extends JPanel implements ActionListener,MouseListener{
     public void setColor(Color color) {
         this.color = color;
     }
-    
-    public void setOcupada(boolean ocupada){
+
+    public void setOcupada(boolean ocupada) {
         this.ocupada = ocupada;
-    }    
-    
-    public boolean getOcupada(){
+    }
+
+    public boolean getOcupada() {
         return this.ocupada;
     }
 
@@ -74,6 +81,17 @@ public class Casilla extends JPanel implements ActionListener,MouseListener{
 
     public void setPieza(IPieza pieza) {
         this.pieza = pieza;
+        this.dibujaPieza();
+    }
+
+    private void dibujaPieza() {
+        if (this.pieza != null) {
+            this.imagen = new ImageIcon(this.pieza.getImagen().getPath());
+            this.etiquetaImage = new JLabel(this.imagen);
+        } else {
+            this.etiquetaImage = new JLabel();
+        }
+        add(this.etiquetaImage);
     }
 
     @Override
@@ -83,31 +101,30 @@ public class Casilla extends JPanel implements ActionListener,MouseListener{
 
     @Override
     public void mouseClicked(MouseEvent me) {
-        if(pieza != null){
-            setBackground(new Color(140,223,255));  
+        if (pieza != null) {
+            setBackground(new Color(140, 223, 255));
             System.out.println("detectó el click");
         }
     }
 
     @Override
     public void mousePressed(MouseEvent me) {
-        
+
     }
 
     @Override
     public void mouseReleased(MouseEvent me) {
-        
+
     }
 
     @Override
     public void mouseEntered(MouseEvent me) {
-        
+
     }
 
     @Override
     public void mouseExited(MouseEvent me) {
-        
+
     }
-    
-    
+
 }
